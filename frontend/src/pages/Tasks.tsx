@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-// import { LogOut, Plus, Check, X, Pencil, Trash2 } from "lucide-react";
 import { LogOut, Plus, Check, X, Trash2 } from "lucide-react";
 import { useAuth } from "../hooks/useAuth";
 import { getTasks, createTask, updateTask, deleteTask } from "../lib/api";

@@ -11,14 +11,13 @@ interface AuthResponse {
     };
 }
 
-export async function login( username: string, password: string): Promise<AuthResponse> {
-    const response = await axios.post<AuthResponse>(`${API_URL}/auth/login`, {username, password});
-    return response.data
+export async function login(username: string, password: string): Promise<AuthResponse> {
+  const response = await axios.post(`${API_URL}/auth/login`, { username, password });
+  return response.data.data;
 }
-
-export async function register( username: string, password: string): Promise<AuthResponse> {
-    const response = await axios.post<AuthResponse>(`${API_URL}/auth/register`, {username, password});
-    return response.data
+export async function register(username: string, password: string): Promise<AuthResponse> {
+  const response = await axios.post(`${API_URL}/auth/register`, { username, password });
+  return response.data.data;
 }
 
 export async function getTasks(token: string): Promise<Task[]> {
@@ -27,9 +26,9 @@ export async function getTasks(token: string): Promise<Task[]> {
     });
     return response.data.result.map((task) => ({
       ...task,
-      userId: task.userId ?? 0, // Ensure userId exists
-      createdAt: task.createdAt ?? "", // Ensure createdAt exists
-      updatedAt: task.updatedAt ?? "", // Ensure updatedAt exists
+      userId: task.userId ?? 0,
+      createdAt: task.createdAt ?? "",
+      updatedAt: task.updatedAt ?? "",
     }));
 }
 
@@ -40,9 +39,9 @@ export async function createTask(token: string, task: { title: string; descripti
   
     return {
       ...response.data.result,
-      userId: response.data.result.userId ?? 0, // Ensure userId exists
-      createdAt: response.data.result.createdAt ?? "", // Ensure createdAt exists
-      updatedAt: response.data.result.updatedAt ?? "", // Ensure updatedAt exists
+      userId: response.data.result.userId ?? 0,
+      createdAt: response.data.result.createdAt ?? "",
+      updatedAt: response.data.result.updatedAt ?? "",
     };
 }
 

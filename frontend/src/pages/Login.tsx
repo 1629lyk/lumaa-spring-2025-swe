@@ -1,32 +1,32 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LogIn } from "lucide-react";
 import { login } from "../lib/api";
 import { useAuth } from "../hooks/useAuth";
 
 export default function Login() {
-    const navigate = useNavigate();
-    const { login: setAuth } = useAuth();
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const { login: setAuth } = useAuth();
+  const [username, setUsername] = useState(""); 
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-    const handleLogin = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setLoading(true);
-        setError(null);
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
 
-        try {
-            const { token } = await login(username, password);
-            setAuth(token);
-            navigate("/tasks");
-        } catch (error) {
-            setError(error instanceof Error ? error.message : "An error occured");
-        } finally {
-            setLoading(false);
-        }
-    };
+    try {
+      const { token } = await login(username, password);
+      setAuth(token);
+      navigate("/tasks");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setLoading(false);
+    }
+  };
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
