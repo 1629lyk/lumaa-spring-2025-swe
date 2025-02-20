@@ -39,6 +39,14 @@ PORT=5001
 
 ---
 
+## **Generating a Strong Random Key for JWT in terminal**
+```sh
+openssl rand -base64 32
+```
+This will output a strong 32-byte key, which you can paste into .env
+
+---
+
 ## **Setting Up PostgreSQL Database**
 ### **Start PostgreSQL**
 If PostgreSQL is installed, start the database service:
