@@ -100,6 +100,28 @@ Run:
 ```
 If no tables are listed, it means the database is empty but ready.
 
+### **Create Users Database**
+
+```sql
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+```
+
+### **Create Tasks Database**
+
+```sql
+CREATE TABLE tasks (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    isComplete BOOLEAN DEFAULT false,
+    userId INT REFERENCES users(id) ON DELETE CASCADE
+);
+```
+
 ---
 
 ## **Running the Backend**
