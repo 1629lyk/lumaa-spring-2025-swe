@@ -100,7 +100,7 @@ Run:
 ```
 If no tables are listed, it means the database is empty but ready.
 
-### **Create Users Database**
+### **Create Users Table**
 
 ```sql
 CREATE TABLE users (
@@ -110,7 +110,7 @@ CREATE TABLE users (
 );
 ```
 
-### **Create Tasks Database**
+### **Create Tasks Table**
 
 ```sql
 CREATE TABLE tasks (
